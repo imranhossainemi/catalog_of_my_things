@@ -1,0 +1,12 @@
+[
+  {
+    "id": 910,
+    "genre": {
+      "name": "New"
+    },
+    "author": "Stephen",
+    "label": "Gift",
+    "publish_date": "2020-05-24",
+    "on_spotify": true
+  }
+]
