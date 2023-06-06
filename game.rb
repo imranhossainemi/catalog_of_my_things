@@ -15,6 +15,10 @@ class Game < Item
         add_authors(authors)
     end
 
+    def self.json_create(object)
+        new(object['title'], object['multiplayer'], object['last_played_at'], object['publish_date'], object['authors'])
+      end  
+
     def add_authors(authors)
         authors.each { |author| add_author(author)}
     end
@@ -31,4 +35,16 @@ class Game < Item
     end
 
     private :can_be_archived?
+
+    def to_hash
+        {
+          id: @id,
+          title: @title,
+          multiplayer: @multiplayer,
+          last_played_at: @last_played_at,
+          publish_date: @publish_date,
+          author_ids: @authors.map(&:id)
+        }
+      end
+      
 end
