@@ -11,6 +11,11 @@ class Author < Item
         @items = []
     end
 
+    def self.json_create(object)
+      new(object['first_name'], object['last_name'], object['items'])
+    end
+    
+
     def add_item(item)
         @items << item unless @items.include?(item)
         item.add_author(self)
