@@ -23,7 +23,7 @@ class App
 
   def display_menu
     loop do
-      puts "Welcome! \nChoose an option:"
+      puts "Welcome to books part! \nChoose an option:"
       puts '1. List all books'
       puts '2. List all labels'
       puts '3. Add a book'
@@ -39,7 +39,7 @@ class App
         books.add_book
       when 4
         save_data
-        exit
+        app_options
         return
       end
     end

@@ -1,3 +1,4 @@
+# require_relative 'main'
 require 'json'
 require_relative 'game'
 require_relative 'author'
@@ -75,7 +76,7 @@ class Store
 
   def display_menu
     loop do
-      puts "Welcome! \nChoose an option:"
+      puts "Welcome to games part! \nChoose an option:"
       puts '1. List all games'
       puts '2. List all authors'
       puts '3. Add game'
@@ -90,8 +91,7 @@ class Store
       when 3
         add_game_menu
       when 4
-        main_menu
-        return
+        app_options
       end
     end
   end
