@@ -1,9 +1,8 @@
-# require_relative 'main'
 require 'json'
 require_relative 'game'
 require_relative 'author'
 
-class Store
+class GameStore
   attr_reader :games, :authors
 
   def initialize
@@ -67,63 +66,47 @@ class Store
 
     games_data = JSON.parse(File.read('./data/games.json'), object_class: Game)
     authors_data = JSON.parse(File.read('./data/authors.json'), object_class: Author)
-    @games = games_data.map do |game_data|
-      Game.new(game_data['title'], game_data['multiplayer'], game_data['last_played_at'], game_data['publish_date'],
-               game_data['authors'])
-    end
+    @games = games_data.map { |game_data| Game.new(game_data['title'], game_data['multiplayer'], game_data['last_played_at'], game_data['publish_date'], game_data['authors']) }
     @authors = authors_data
   end
 
   def display_menu
     loop do
-      puts "Welcome to games part! \nChoose an option:"
+      puts "Welcome!\nChoose an option:"
       puts '1. List all games'
       puts '2. List all authors'
       puts '3. Add game'
       puts '4. Quit'
       choice = gets.chomp.to_i
-
       case choice
       when 1
         list_games
       when 2
         list_authors
       when 3
-        add_game_menu
+        puts 'Enter game title:'
+        title = gets.chomp
+        puts 'Is the game multiplayer? (Y/N)'
+        multiplayer = gets.chomp.downcase == 'y'
+        puts 'Enter the date of the last time the
+   game was played (YYYY/MM/DD):'
+        last_played_at = gets.chomp
+        puts 'Enter the game\'s publish date (YYYY/MM/DD):'
+        publish_date = gets.chomp
+        game = Game.new(title, multiplayer, last_played_at, publish_date, [])
+        puts 'Enter author first name:'
+        first_name = gets.chomp
+        puts 'Enter author last name:'
+        last_name = gets.chomp
+        author = Author.new(first_name, last_name)
+        game.add_author(author)
+        add_game(game)
       when 4
-        app_options
+        main_menu
+        return
+      else
+        puts 'Invalid choice. Please choose again.'
       end
     end
-  end
-
-  def add_game_menu
-    puts 'Enter game title:'
-    title = gets.chomp
-    puts 'Is the game multiplayer? (Y/N)'
-    multiplayer = gets.chomp.downcase == 'y'
-    puts 'Enter the date of the last time the game was played (YYYY/MM/DD):'
-    last_played_at = gets.chomp
-    puts 'Enter the game\'s publish date (YYYY/MM/DD):'
-    publish_date = gets.chomp
-    game = create_game(title, multiplayer, last_played_at, publish_date)
-    add_author_to_game(game)
-    add_game(game)
-  end
-
-  def create_game(title, multiplayer, last_played_at, publish_date)
-    Game.new(title, multiplayer, last_played_at, publish_date, [])
-  end
-
-  # def create_game(title, multiplayer, last_played_at, publish_date)
-  #   Game.new(title, multiplayer, last_played_at, publish_date)
-  # end  
-
-  def add_author_to_game(game)
-    puts 'Enter author first name:'
-    first_name = gets.chomp
-    puts 'Enter author last name:'
-    last_name = gets.chomp
-    author = Author.new(first_name, last_name)
-    game.add_author(author)
   end
 end

@@ -1,56 +1,35 @@
-require 'json'
 require 'date'
 
 class Item
-  attr_reader :genre, :author, :label
+  attr_reader :id, :genre, :author, :source, :label, :publish_date, :archived
 
-  def initialize(publish_date)
-    @id = Random.rand(1..1000)
-    @publish_date = publish_date
+  def initialize(id = Random.rand(1..1000))
+    @id = id
+    @genre = nil
+    @author = nil
+    @source = nil
+    @label = nil
+    @publish_date = nil
     @archived = false
   end
 
-  def can_be_archived?
-    age_in_years = Time.now.year - @publish_date.year
-    age_in_years >= 10
-  end
-
-  def genre=(genre)
-    @genre = genre
-    genre.items.push(self) unless genre.items.include?(self)
-  end
-
-  def author=(author)
-    @author = author
-    author.items.push(self) unless author.items.include?(self)
-  end
-
-  def label=(label)
-    @label = label
-    label.items.push(self) unless label.items.include?(self)
-  end
-
   def move_to_archive
-    @archived = can_be_archived?
+    @archived = true if can_be_archived?
   end
 
-  def to_json(*args)
-    {
-      id: @id,
-      genre: @genre,
-      author: @author,
-      label: @label,
-      publish_date: @publish_date
-    }.to_json(*args)
-  end
+  private
 
-  def self.from_json(json)
-    data = JSON.parse(json)
-    new(
-      data['genre'],
-      data['author'],
-      data['label'],
-      Time.parse(data['publish_date'])
-    )
+  def can_be_archived?
+    begin
+      publish_date = Date.parse(@publish_date)
+    rescue StandardError
+      publish_date = nil
+    end
+    if publish_date.nil?
+      false
+    else
+      (Date.today.year - publish_date.year) > 10
+    end
   end
 end
+

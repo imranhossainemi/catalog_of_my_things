@@ -1,11 +1,13 @@
-require 'json'
 require_relative 'item'
+
 class Author < Item
-  attr_reader :id, :first_name, :last_name, :_items
+  attr_reader :id, :first_name, :last_name, :items
+
+  @id_counter = 0
 
   def initialize(first_name = '', last_name = '', _items = [])
     super()
-    @id_counter |= 0
+    @id_counter ||= 0
     @id_counter += 1
     @id = @id_counter
     @first_name = first_name
@@ -39,4 +41,10 @@ class Author < Item
     attr_accessor :id_counter
   end
   @id_counter = 0
+end
+
+class Foo
+  def bar
+    Author.id_counter = 42
+  end
 end
