@@ -1,46 +1,38 @@
 require_relative 'app'
+require_relative 'game_ui'
 
-def list_options
+def app_options
   puts 'Please select an option:'
-  puts '1. List all books'
-  puts '6. List all labels'
-  puts '7. Add a book'
+  puts '1. option for books'
+  puts '2. Option for music'
+  puts '3. Option for games'
   puts '0 - Exit'
-end
+  
+  print 'Please select an option:'
+    choice = gets.chomp.to_i
 
-def options(app, choice)
   case choice
   when 1
-    app.books.list_all_books
-  when 6
-    app.books.list_all_labels
-  end
-end
-
-def options1(app, choice)
-  case choice
-  when 7
-    app.books.add_book
+    app = App.new
+    app.display_menu
+  when 2
+    music.display_menu
+  when 3
+    store = Store.new
+    store.display_menu
   when 0
-    app.save_data
     exit
   end
 end
 
-def selection(app, choice)
-  options(app, choice)
-  options1(app, choice)
-end
 
 def main
   app = App.new
   app.load_data
   puts 'Welcome to our App..'
   loop do
-    list_options
-    print 'Please select an option:'
-    choice = gets.chomp.to_i
-    selection(app, choice)
+    app_options
+    # selection(app, choice)
   end
 end
 

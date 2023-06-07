@@ -21,6 +21,30 @@ class App
     @books.load_labels
   end
 
+  def display_menu
+    loop do
+      puts "Welcome! \nChoose an option:"
+      puts '1. List all books'
+      puts '2. List all labels'
+      puts '3. Add a book'
+      puts '4. Quit'
+      choice = gets.chomp.to_i
+
+      case choice
+      when 1
+        books.list_all_books
+      when 2
+        books.list_all_labels
+      when 3
+        books.add_book
+      when 4
+        save_data
+        exit
+        return
+      end
+    end
+  end
+
   
   private
 
