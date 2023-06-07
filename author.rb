@@ -1,5 +1,5 @@
 require 'json'
-require_relative item
+require_relative 'item'
 class Author < Item
   attr_reader :id, :first_name, :last_name, :_items
 

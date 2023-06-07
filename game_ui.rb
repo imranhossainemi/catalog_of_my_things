@@ -2,7 +2,7 @@ require 'json'
 require_relative 'game'
 require_relative 'author'
 
-class GameStore
+class Store
   attr_reader :games, :authors
 
   def initialize
@@ -113,6 +113,10 @@ class GameStore
   def create_game(title, multiplayer, last_played_at, publish_date)
     Game.new(title, multiplayer, last_played_at, publish_date, [])
   end
+
+  # def create_game(title, multiplayer, last_played_at, publish_date)
+  #   Game.new(title, multiplayer, last_played_at, publish_date)
+  # end  
 
   def add_author_to_game(game)
     puts 'Enter author first name:'

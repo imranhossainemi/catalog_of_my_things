@@ -4,15 +4,15 @@ class Game < Item
   attr_accessor :multiplayer, :last_played_at, :publish_date, :authors
   attr_reader :id, :title
 
-  def initialize(title, multiplayer, last_played_at, publish_date, _authors = [])
+  def initialize(title, multiplayer, last_played_at, publish_date, authors = [])
     @id = Random.rand(1..1000)
-    super()
+    super(Date.parse(publish_date))
     @title = title
     @multiplayer = multiplayer
     @last_played_at = last_played_at
     Date.parse(publish_date).strftime('%Y/%m/%d')
     @can_be_archived = can_be_archived?
-    # add_authors(authors)
+    add_authors(authors)
   end
 
   def self.json_create(object)
