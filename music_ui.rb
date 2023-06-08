@@ -81,7 +81,7 @@ class MusicUI
 
   def preserve_music_album_genre
     return if @music_albums.empty?
-  
+
     music = @music_albums.map do |album|
       {
         id: album.id,
@@ -92,15 +92,14 @@ class MusicUI
         genre_id: album.genre.id
       }
     end
-  
+
     music_data = JSON.pretty_generate(music)
     File.write('./data/music.json', music_data)
   end
-  
 
   def populate_music_album_genre
     return unless File.exist?('./data/music.json')
-  
+
     music_data = File.read('./data/music.json')
     music = JSON.parse(music_data, symbolize_names: true)
     music.each do |album|
@@ -113,5 +112,5 @@ class MusicUI
       music_album.add_genre(genre)
       @music_albums << music_album
     end
-  end  
-end  
+  end
+end

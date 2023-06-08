@@ -51,12 +51,12 @@ class App
 
   def music_display_menu
     loop do
-      puts "Welcome to the music part!"
-      puts "Choose an option:"
-      puts "1. List all music albums"
-      puts "2. List all genres"
-      puts "3. Add a music album"
-      puts "4. Quit"
+      puts 'Welcome to the music part!'
+      puts 'Choose an option:'
+      puts '1. List all music albums'
+      puts '2. List all genres'
+      puts '3. Add a music album'
+      puts '4. Quit'
 
       choice = gets.chomp.to_i
 
@@ -73,7 +73,7 @@ class App
       end
     end
   end
-  
+
   private
 
   def load_json_data(file_name, class_type)

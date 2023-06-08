@@ -8,9 +8,9 @@ def app_options(app)
   puts '2. Option for music'
   puts '3. Option for games'
   puts '0 - Exit'
-  
+
   print 'Please select an option:'
-    choice = gets.chomp.to_i
+  choice = gets.chomp.to_i
 
   case choice
   when 1
@@ -25,7 +25,6 @@ def app_options(app)
     exit
   end
 end
-
 
 def main
   app = App.new

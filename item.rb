@@ -37,4 +37,3 @@ class Item
     end
   end
 end
-
