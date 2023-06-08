@@ -1,6 +1,5 @@
-require_relative '../game.rb'
-require_relative '../author.rb'
-
+require_relative '../game'
+require_relative '../author'
 
 describe Game do
   let(:authors) { [Author.new('Ikoote', 'Rasuli')] }

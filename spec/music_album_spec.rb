@@ -1,5 +1,5 @@
 require 'rspec'
-require_relative '../music_album.rb'
+require_relative '../music_album'
 
 describe MusicAlbum do
   let(:album_title) { 'Santosh' }

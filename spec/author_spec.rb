@@ -1,7 +1,6 @@
 require_relative '../author'
 require_relative '../game'
 
-
 describe Author do
   describe '#initialize' do
     it 'creates a new author with the provided attributes' do

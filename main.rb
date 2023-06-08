@@ -32,6 +32,8 @@ def main
   loop do
     app_options(app)
   end
+ensure
+  app.save_data
 end
 
 main
