@@ -3,7 +3,7 @@ require_relative '../author.rb'
 
 
 describe Game do
-  let(:authors) { [Author.new('John', 'Doe')] }
+  let(:authors) { [Author.new('Ikoote', 'Rasuli')] }
 
   describe '#initialize' do
     it 'creates a new game with the provided attributes' do
@@ -30,7 +30,7 @@ describe Game do
   describe '#add_author' do
     it 'adds a single author to the game' do
       game = Game.new('Title', true, '2023/01/01', '2022/01/01')
-      author = Author.new('Jane', 'Smith')
+      author = Author.new('Mukisa', 'Rehema')
 
       game.add_author(author)
 
@@ -40,7 +40,7 @@ describe Game do
 
     it 'does not add the same author multiple times' do
       game = Game.new('Title', true, '2023/01/01', '2022/01/01')
-      author = Author.new('Jane', 'Smith')
+      author = Author.new('Mukisa', 'Rehema')
 
       game.add_author(author)
       game.add_author(author)

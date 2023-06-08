@@ -5,16 +5,16 @@ require_relative '../game'
 describe Author do
   describe '#initialize' do
     it 'creates a new author with the provided attributes' do
-      author = Author.new('John', 'Doe')
+      author = Author.new('Ikoote', 'Rasuli')
 
-      expect(author.first_name).to eq('John')
-      expect(author.last_name).to eq('Doe')
+      expect(author.first_name).to eq('Ikoote')
+      expect(author.last_name).to eq('Rasuli')
     end
   end
 
   describe '#add_item' do
     it 'adds an item to the author' do
-      author = Author.new('John', 'Doe')
+      author = Author.new('Ikoote', 'Rasuli')
       game = Game.new('Title', true, '2023/01/01', '2022/01/01')
 
       author.add_item(game)
@@ -24,7 +24,7 @@ describe Author do
     end
 
     it 'does not add the same item multiple times' do
-      author = Author.new('John', 'Doe')
+      author = Author.new('Ikoote', 'Rasuli')
       game = Game.new('Title', true, '2023/01/01', '2022/01/01')
 
       author.add_item(game)
@@ -37,22 +37,22 @@ describe Author do
 
   describe '#full_name' do
     it 'returns the full name of the author' do
-      author = Author.new('John', 'Doe')
+      author = Author.new('Ikoote', 'Rasuli')
 
-      expect(author.full_name).to eq('John Doe')
+      expect(author.full_name).to eq('Ikoote Rasuli')
     end
   end
 
   describe '#to_hash' do
     it 'returns a hash representation of the author' do
-      author = Author.new('John', 'Doe')
+      author = Author.new('Ikoote', 'Rasuli')
 
       hash = author.to_hash
 
       expect(hash).to be_a(Hash)
       expect(hash[:id]).to be_a(Integer)
-      expect(hash[:first_name]).to eq('John')
-      expect(hash[:last_name]).to eq('Doe')
+      expect(hash[:first_name]).to eq('Ikoote')
+      expect(hash[:last_name]).to eq('Rasuli')
       expect(hash[:items]).to eq([])
     end
   end
