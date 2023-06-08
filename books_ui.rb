@@ -35,7 +35,7 @@ class BooksUI
   def save_books
     books = @books.each_with_index.map do |book, index|
       {
-        publisher: book.publisher, publish_date: book.publish_date, cover_state: book.cover_state, index: index
+        publisher: book.publisher, publish_date: book.publish_date, cover_state: book.cover_state, index:
       }
     end
     File.write('./data/books.json', JSON.generate(books))
@@ -65,7 +65,7 @@ class BooksUI
   def save_labels
     labels = @labels.each_with_index.map do |label, index|
       {
-        index: index, title: label.title, color: label.color
+        index:, title: label.title, color: label.color
       }
     end
     File.write('./data/labels.json', JSON.generate(labels))
