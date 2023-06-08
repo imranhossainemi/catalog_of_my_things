@@ -19,8 +19,8 @@ def app_options(app)
     app.music_display_menu
   when 3
     store = Store.new
-    store.display_menu(app)
-    store.music_display_menu
+    store.display_menu
+    # store.music_display_menu
   when 0
     exit
   end

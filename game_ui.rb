@@ -2,7 +2,7 @@ require 'json'
 require_relative 'game'
 require_relative 'author'
 
-class GameStore
+class Store
   attr_reader :games, :authors
 
   def initialize
@@ -66,16 +66,13 @@ class GameStore
 
     games_data = JSON.parse(File.read('./data/games.json'), object_class: Game)
     authors_data = JSON.parse(File.read('./data/authors.json'), object_class: Author)
-    @games = games_data.map do |game_data|
-      Game.new(game_data['title'], game_data['multiplayer'], game_data['last_played_at'], game_data['publish_date'],
-               game_data['authors'])
-    end
+    @games = games_data.map { |game_data| Game.new(game_data['title'], game_data['multiplayer'], game_data['last_played_at'], game_data['publish_date'], game_data['authors']) }
     @authors = authors_data
   end
 
   def display_menu
     loop do
-      puts "Welcome!\nChoose an option:"
+      puts "Welcome! \nChoose an option:"
       puts '1. List all games'
       puts '2. List all authors'
       puts '3. Add game'
@@ -92,7 +89,7 @@ class GameStore
         puts 'Is the game multiplayer? (Y/N)'
         multiplayer = gets.chomp.downcase == 'y'
         puts 'Enter the date of the last time the
-        game was played (YYYY/MM/DD):'
+   game was played (YYYY/MM/DD):'
         last_played_at = gets.chomp
         puts 'Enter the game\'s publish date (YYYY/MM/DD):'
         publish_date = gets.chomp
@@ -105,7 +102,7 @@ class GameStore
         game.add_author(author)
         add_game(game)
       when 4
-        main_menu
+        save_data
         return
       else
         puts 'Invalid choice. Please choose again.'
