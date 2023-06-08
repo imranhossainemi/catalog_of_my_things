@@ -2,6 +2,7 @@ require_relative 'book'
 require_relative 'item'
 require_relative 'label'
 require_relative 'books_ui'
+require_relative 'music_ui'
 require 'json'
 
 class App
@@ -9,11 +10,14 @@ class App
 
   def initialize
     @books = BooksUI.new
+    @music_ui = MusicUI.new
+    @music_ui.populate_music_album_genre
   end
 
   def save_data
     @books.save_books
     @books.save_labels
+    @music_ui.preserve_music_album_genre
   end
 
   def load_data
@@ -21,7 +25,7 @@ class App
     @books.load_labels
   end
 
-  def display_menu
+  def display_menu(app)
     loop do
       puts "Welcome to books part! \nChoose an option:"
       puts '1. List all books'
@@ -39,12 +43,36 @@ class App
         books.add_book
       when 4
         save_data
-        app_options
+        app_options(app)
         return
       end
     end
   end
 
+  def music_display_menu
+    loop do
+      puts "Welcome to the music part!"
+      puts "Choose an option:"
+      puts "1. List all music albums"
+      puts "2. List all genres"
+      puts "3. Add a music album"
+      puts "4. Quit"
+
+      choice = gets.chomp.to_i
+
+      case choice
+      when 1
+        @music_ui.list_music_albums
+      when 2
+        @music_ui.list_genres
+      when 3
+        @music_ui.loop_create_music_album
+      when 4
+        save_data
+        return
+      end
+    end
+  end
   
   private
 

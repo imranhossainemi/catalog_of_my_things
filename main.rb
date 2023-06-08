@@ -1,7 +1,8 @@
 require_relative 'app'
 require_relative 'game_ui'
+require_relative 'music_ui'
 
-def app_options
+def app_options(app)
   puts 'Please select an option:'
   puts '1. option for books'
   puts '2. Option for music'
@@ -13,13 +14,13 @@ def app_options
 
   case choice
   when 1
-    app = App.new
-    app.display_menu
+    app.display_menu(app)
   when 2
-    music.display_menu
+    app.music_display_menu
   when 3
     store = Store.new
-    store.display_menu
+    store.display_menu(app)
+    store.music_display_menu
   when 0
     exit
   end
@@ -31,7 +32,7 @@ def main
   app.load_data
   puts 'Welcome to our App..'
   loop do
-    app_options
+    app_options(app)
     # selection(app, choice)
   end
 end
