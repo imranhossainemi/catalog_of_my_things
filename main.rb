@@ -20,7 +20,6 @@ def app_options(app)
   when 3
     store = Store.new
     store.display_menu
-    # store.music_display_menu
   when 0
     exit
   end
@@ -32,7 +31,6 @@ def main
   puts 'Welcome to our App..'
   loop do
     app_options(app)
-    # selection(app, choice)
   end
 end
 
