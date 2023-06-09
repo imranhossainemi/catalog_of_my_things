@@ -8,6 +8,7 @@ class Store
   def initialize
     @games = []
     @authors = []
+    load_data
   end
 
   def add_game(game)

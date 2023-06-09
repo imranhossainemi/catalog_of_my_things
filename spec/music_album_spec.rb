@@ -1,11 +1,11 @@
 require 'rspec'
-require_relative 'music_album'
+require_relative '../music_album'
 
 describe MusicAlbum do
   let(:album_title) { 'Santosh' }
   let(:publish_date) { '2023-04-02' }
   let(:on_spotify) { false }
-  let(:music_album) { described_class.new(album_title, publish_date, on_spotify) }
+  let(:music_album) { described_class.new(album_title, publish_date) }
 
   describe '#initialize' do
     it 'initializes a new MusicAlbum object with the given parameters' do
