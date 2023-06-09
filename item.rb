@@ -3,13 +3,13 @@ require 'date'
 class Item
   attr_reader :id, :genre, :author, :source, :label, :publish_date, :archived
 
-  def initialize(id = Random.rand(1..1000))
+  def initialize(id = Random.rand(1..1000),publish_date)
     @id = id
     @genre = nil
     @author = nil
     @source = nil
     @label = nil
-    @publish_date = nil
+    @publish_date = publish_date
     @archived = false
   end
 
