@@ -32,7 +32,7 @@ UML class daigram:
 <br/>
 <img src="catalog_of_my_things.png" width ="auto" height="auto" align="center">
 <br/>
-Video Presntation link:[click here](https://drive.google.com/file/d/11iyYwzlnt4eh3poL4DpxWIh3PM0YZJLI/view?usp=sharing)
+Video Presntation link:[click here](https://drive.google.com/file/d/12a2__570AyqfoWiozydS4STI3sygp0T1/view?usp=share_link)
 
 ## 🛠 Built With <a name="built-with"></a>
 
