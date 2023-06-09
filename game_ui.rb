@@ -93,9 +93,9 @@ class Store
         puts 'Is the game multiplayer? (Y/N)'
         multiplayer = gets.chomp.downcase == 'y'
         puts 'Enter the date of the last time the
-   game was played (YYYY/MM/DD):'
+   game was played (YYYY-MM-DD):'
         last_played_at = gets.chomp
-        puts 'Enter the game\'s publish date (YYYY/MM/DD):'
+        puts 'Enter the game\'s publish date (YYYY-MM-DD):'
         publish_date = gets.chomp
         game = Game.new(title, multiplayer, last_played_at, publish_date, [])
         puts 'Enter author first name:'
